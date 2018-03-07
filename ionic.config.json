@@ -1,0 +1,8 @@
+{
+  "name": "PayEasyTicket",
+  "app_id": "bfd0f116",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}

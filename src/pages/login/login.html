@@ -25,14 +25,14 @@
   </div>
   <h2>Faça o login do seu usuário.</h2>
   <hr>
-  <form (submit)="doLogin()">
+  <form (submit)="doLogin(user)">
     <ion-item>
       <ion-label stacked>Usuário</ion-label>
-      <ion-input [(ngModel)]="loginData.username" name="username" type="text" placeholder="Usuário" ></ion-input>
+      <ion-input [(ngModel)]="user.email" name="username" type="text" placeholder="Usuário" ></ion-input>
     </ion-item>
     <ion-item>
       <ion-label stacked>Senha</ion-label>
-      <ion-input [(ngModel)]="loginData.password" name="password" type="password" placeholder="Senha"></ion-input>
+      <ion-input [(ngModel)]="user.password" name="password" type="password" placeholder="Senha"></ion-input>
     </ion-item>
     <hr>
     <button ion-button block type="submit">

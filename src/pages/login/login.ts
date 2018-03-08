@@ -2,7 +2,9 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AuthenticUserProvider } from '../../providers/authentic-user/authentic-user';
 import { RegisterPage } from '../register/register';
-
+import { App } from 'ionic-angular';
+import { HomePage } from '../home/home';
+//import { Headers } from '@angular/http';
 
 /**
  * Generated class for the LoginPage page.
@@ -23,18 +25,25 @@ export class LoginPage {
 
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
-              public authentic: AuthenticUserProvider) {
+              public authentic: AuthenticUserProvider,
+              public app: App) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
   }
 
-  loginData = {}
+  user = {
+  }
 
 
-  doLogin() {
-
+  doLogin(user) {
+    this.authentic.login({email: user.email, password: user.password})
+                  .subscribe(response => {
+      this.app.getRootNav().setRoot(HomePage, response);
+    }, error => {
+      this.app.getRootNav().setRoot(LoginPage);
+    })
   }
 
   register() {

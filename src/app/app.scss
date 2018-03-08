@@ -34,3 +34,8 @@
   color: white;
   background-color: transparent;
 }
+
+.scroll-content {
+    overflow-x: hidden;
+    overflow-y: hidden !important;
+}

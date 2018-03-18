@@ -14,15 +14,20 @@ export class AuthenticUserProvider {
     console.log('Hello AuthenticUserProvider Provider');
   }
 
-  private url:string = 'http://localhost:3000/auth/';
+  private url:string = 'http://localhost:3000/';
+  private urlDefault:string = 'http://localhost:3000/';
 
 
   login(data: any) {
-    return this.http.post(this.url + 'sign_in', data);
+    return this.http.post(this.url + 'users/sign_in', data);
   }
 
   logout(userAbility: any) {
     return this.http.delete(this.url + 'sign_out', userAbility);
+  }
+
+  register(userCreate: any) {
+    return this.http.post(this.urlDefault + 'api/v1/doRegister', userCreate);
   }
 
 }

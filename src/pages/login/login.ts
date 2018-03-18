@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { AuthenticUserProvider } from '../../providers/authentic-user/authentic-user';
 import { RegisterPage } from '../register/register';
 import { App } from 'ionic-angular';
@@ -26,7 +26,8 @@ export class LoginPage {
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
               public authentic: AuthenticUserProvider,
-              public app: App) {
+              public app: App,
+              public loadingCtrl: LoadingController) {
   }
 
   ionViewDidLoad() {
@@ -38,12 +39,17 @@ export class LoginPage {
 
 
   doLogin(user) {
-    this.authentic.login({email: user.email, password: user.password})
-                  .subscribe(response => {
-      this.app.getRootNav().setRoot(HomePage, response);
-    }, error => {
-      this.app.getRootNav().setRoot(LoginPage);
-    })
+    this.authentic.login({user: { email: user.email, 
+                                  password: user.password, 
+                                  session: { email: user.email, password: user.password}
+                                }
+                          }
+                        ).subscribe(response => {
+                                                  this.presentLoading();
+                                                  this.app.getRootNav().setRoot(HomePage, response);
+                                                }, error => {
+                                                  this.app.getRootNav().setRoot(LoginPage);
+                                                })
   }
 
   register() {
@@ -52,5 +58,13 @@ export class LoginPage {
 
   goToRegister() {
     this.navCtrl.push(RegisterPage);
+  }
+
+  presentLoading() {
+    this.loadingCtrl.create({
+      content: 'Acesso Permitido!',
+      duration: 4000
+      //dismissOnPageChange: true
+    }).present();
   }
 }

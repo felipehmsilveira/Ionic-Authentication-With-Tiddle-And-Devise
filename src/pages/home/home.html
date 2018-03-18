@@ -3,16 +3,44 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Pay Easy Ticket</ion-title>
+    <ion-title>IonicAuthenticationWithTiddleAndDevise</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <h3>Ionic Menu Starter</h3>
+<ion-content>
+  <div style="height: 25%; background: #9fc7be; width: 100%; top: 0;">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <img src="assets/imgs/nulo.svg" class="img-nulo">
+        </ion-col>
+        <ion-col>
+          <div style="margin-top: 6%;">
+            <strong class="text-21-white">{{userAbility.name}}</strong>
+            <strong class="text-15-white">{{userAbility.email}}</strong>
+          </div>
+        </ion-col>
+        <ion-col>
+        </ion-col>
+        <ion-col>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <span class="text-14-white-m-l">Logado com {{userAbility.nickname}}</span>
+  </div>
 
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will show you the way.
-  </p>
-
-  <button ion-button secondary menuToggle>Toggle Menu</button>
+  <ion-grid>
+      <ion-row>
+        <ion-col>
+          <button ion-button round outline class="width-100-blue">Pagar</button>
+        </ion-col>
+        <ion-col>
+          <button ion-button round outline class="width-100-blue">Extratos</button>
+        </ion-col>
+        <ion-col>
+          <button ion-button round outline class="width-100-blue">Opções</button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <hr>
 </ion-content>
